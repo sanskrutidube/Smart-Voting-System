@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Online Voting System - Training</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="Free Website Template" name="keywords">
+        <meta content="Free Website Template" name="description">
+
+        <!-- Favicon -->
+        <link href="static/img/favicon.ico" rel="icon">
+
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="static/lib/animate/animate.min.css" rel="stylesheet">
+        <link href="static/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="static/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="static/css/style.css" rel="stylesheet">
+    </head>
+
+<!--    <body>-->
+    <body style="background-image:url('static/img/bg2.png'); background-size:cover;">
+
+        <!-- Nav Bar Start -->
+        <div class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <div class="container-fluid">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto">
+                        <a href="{{ url_for('home') }}" class="nav-item nav-link">Home</a>
+<!--                        <a href="{{ url_for('admin') }}" class="nav-item nav-link">Admin</a>-->
+                        <a href="{{ url_for('train') }}" class="nav-item nav-link active">Train</a>
+                        <a href="{{ url_for('voting') }}" class="nav-item nav-link">Vote</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Nav Bar End -->
+
+<style>
+<!--input[type=radio] {-->
+<!--  position: absolute;-->
+<!--  opacity: 0;-->
+<!--  width: 0;-->
+<!--  height: 0;-->
+<!--}-->
+
+input[type=radio] + img {
+  cursor: pointer;
+}
+
+input[type="radio"]:checked + label {
+    outline: 2px solid #f00;
+}
+
+
+</style>
+        <center>
+        <div class="col-md-8">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+          {% block content %}{% endblock %}
+        </div>
+        </center>
+
+        <!-- Hero Start -->
+        <div class="hero">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="hero-text">
+                                <center><h1 style="margin-left:420px">Train Model</h1></center>
+                                <br>
+                                <div style="margin-left: 280px">
+                                    <form action="{{ url_for('train') }}" method="post">
+                                        <div class="" style="padding:20px;">
+                                            <p style="font-size: x-large;"><b>Click on train model to start training using the collected data.</b></p>
+                                            <p style="font-size: x-large;"><b>It might take some time for the model to train.</b></p>
+                                            <p style="font-size: x-large;"><b>You will be directed to the home page once training is complete.</b></p>
+                                        </div><br>
+                                        <div class="row" style="margin-left: 230px">
+                                            <input class='btn' type="submit" value="Train Model">
+                                        </div>
+
+                                    </form>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero End -->
+
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="static/lib/easing/easing.min.js"></script>
+        <script src="static/lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="static/lib/isotope/isotope.pkgd.min.js"></script>
+        <script src="static/lib/lightbox/js/lightbox.min.js"></script>
+
+        <!-- Contact Javascript File -->
+        <script src="static/mail/jqBootstrapValidation.min.js"></script>
+        <script src="static/mail/contact.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="static/js/main.js"></script>
+    </body>
+</html>

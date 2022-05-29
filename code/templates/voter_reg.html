@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Online Voting System - Voter Registration</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="Free Website Template" name="keywords">
+        <meta content="Free Website Template" name="description">
+
+        <!-- Favicon -->
+        <link href="static/img/favicon.ico" rel="icon">
+
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="static/lib/animate/animate.min.css" rel="stylesheet">
+        <link href="static/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="static/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="static/css/style.css" rel="stylesheet">
+    </head>
+
+<!--    <body>-->
+    <body style="background-image:url('static/img/Election_Header.jpg'); background-size:cover;">
+
+        <!-- Nav Bar Start -->
+        <div class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <div class="container-fluid">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto">
+                        <a href="{{ url_for('home') }}" class="nav-item nav-link">Home</a>
+                        <a href="{{ url_for('admin') }}" class="nav-item nav-link">Admin</a>
+<!--                        <a href="{{ url_for('train') }}" class="nav-item nav-link">Train</a>-->
+                        <a href="{{ url_for('voting') }}" class="nav-item nav-link">Vote</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Nav Bar End -->
+
+<style>
+<!--input[type=radio] {-->
+<!--  position: absolute;-->
+<!--  opacity: 0;-->
+<!--  width: 0;-->
+<!--  height: 0;-->
+<!--}-->
+
+input[type=radio] + img {
+  cursor: pointer;
+}
+
+input[type="radio"]:checked + label {
+    outline: 2px solid #f00;
+}
+
+
+</style>
+        <center>
+        <div class="col-md-8">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}</div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+          {% block content %}{% endblock %}
+        </div>
+        </center>
+
+        <!-- Hero Start -->
+        <div class="hero">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="hero-text">
+                                <center><h1 style="margin-left:380px">Voter Registration</h1></center>
+                                <br>
+                                <div style="margin-left: 250px">
+                                    <form action="{{ url_for('registration') }}" method="post">
+                                        <div class="row" style="padding:20px;">
+                                            <div class="column">
+                                                <input type="text" name="first_name" class="form-control" placeholder="First Name" required="required" data-validation-required-message="Please enter your first name" />
+                                            </div>
+                                            <div class="column" style="margin-left: 50px">
+                                                <input type="text" name="middle_name" class="form-control" placeholder="Middle Name (optional)"/>
+                                            </div>
+                                            <div class="column" style="margin-left: 50px">
+                                                <input type="text" name="last_name" class="form-control" placeholder="Last Name" required="required" data-validation-required-message="Please enter your last name" />
+                                            </div>
+                                        </div><br>
+                                        <div class="row" style="padding:20px;">
+                                            <div class="column" style="margin-left: 120px">
+                                                <input type="number" name="aadhar_id" class="form-control" placeholder="AADHAR Number" required="required" pattern="[0-9]{12}"  title="It must contain 12 number" minlength="12" maxlength="12" />
+                                            </div>
+                                            <div class="column" style="margin-left: 80px">
+                                                <input type="text" name="voter_id" class="form-control" placeholder="Voter ID"   pattern="(?=.*[0-9])(?=.*[A-Z]).{8}" title="Must contain numbers and uppercase letters(8)"  required="required"/>
+                                            </div>
+                                        </div><br>
+                                        <div class="row" style="margin-left: 50px">
+                                            <div class="column">
+                                                <input type="email" name="email" class="form-control" placeholder="Email ID" required="required" />
+                                            </div>
+                                             <div class="column" style="margin-left: 50px">
+                                                <input type="tel" name="pno" class="form-control" placeholder="Mobile Number" pattern="[0-9]{10}" title="It must contain 10 number" required />
+                                            </div>
+                                              <div class="column" style="margin-left: 50px">
+                                                <input type="number" name="age" class="form-control" placeholder="Age" required="required" data-validation-required-message="Please enter your age" />
+                                            </div>
+
+<br><br><br>
+                                              <div class="column" style="margin-left: 50px">
+
+    <select class="form-control" name="state" id="inputState">
+                        <option value="SelectState">Select State</option>
+                        <option value="Andra Pradesh">Andra Pradesh</option>
+                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                        <option value="Assam">Assam</option>
+                        <option value="Bihar">Bihar</option>
+                        <option value="Chhattisgarh">Chhattisgarh</option>
+                        <option value="Goa">Goa</option>
+                        <option value="Gujarat">Gujarat</option>
+                        <option value="Haryana">Haryana</option>
+                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                        <option value="Jharkhand">Jharkhand</option>
+                        <option value="Karnataka">Karnataka</option>
+                        <option value="Kerala">Kerala</option>
+                        <option value="Madya Pradesh">Madya Pradesh</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="Manipur">Manipur</option>
+                        <option value="Meghalaya">Meghalaya</option>
+                        <option value="Mizoram">Mizoram</option>
+                        <option value="Nagaland">Nagaland</option>
+                        <option value="Orissa">Orissa</option>
+                        <option value="Punjab">Punjab</option>
+                        <option value="Rajasthan">Rajasthan</option>
+                        <option value="Sikkim">Sikkim</option>
+                        <option value="Tamil Nadu">Tamil Nadu</option>
+                        <option value="Telangana">Telangana</option>
+                        <option value="Tripura">Tripura</option>
+                        <option value="Uttaranchal">Uttaranchal</option>
+                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                        <option value="West Bengal">West Bengal</option>
+                        <option disabled style="background-color:#aaa; color:#fff">UNION Territories</option>
+                        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                        <option value="Chandigarh">Chandigarh</option>
+                        <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                        <option value="Daman and Diu">Daman and Diu</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Lakshadeep">Lakshadeep</option>
+                        <option value="Pondicherry">Pondicherry</option>
+                      </select>
+                                              </div>
+  <div class="form-group col-md-4" style="margin-left: 50px">
+<!--    <label for="inputDistrict">District</label>-->
+    <select class="form-control" name="d_name" id="inputDistrict">
+        <option value="">-- select one -- </option>
+    </select>
+  </div>  </div>
+  <div class="row" style="margin-left: 270px">
+                                            <input class='btn' type="submit" value="Email Verification">
+                                        </div>
+                                    </form>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+
+
+        <!-- Hero End -->
+
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="static/lib/easing/easing.min.js"></script>
+        <script src="static/lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="static/lib/isotope/isotope.pkgd.min.js"></script>
+        <script src="static/lib/lightbox/js/lightbox.min.js"></script>
+
+        <!-- Contact Javascript File -->
+        <script src="static/mail/jqBootstrapValidation.min.js"></script>
+        <script src="static/mail/contact.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="static/js/main.js"></script>
+        <script src="static/js/distric.js"></script>
+    </body>
+</html>
