@@ -12,7 +12,7 @@ In existing systems, voters go to the voting centers and they use their votes ma
 
 ## PROPOSED METHOD OF SMART VOTING SYSTEM:
 
-In the proposed system, we have tried to build a secure online voting system that is free from unauthorized access while casting votes by the voters. The server aspects of the proposed system have such distribution of authority that server does not enable to manipulate the votes. It is expected that the proposed online voting system will increase the transparency and reliability of the existing electoral system. It uses computer vision techniques for person identification. 
+In the proposed system, I have tried to build a secure online voting system that is free from unauthorized access while casting votes by the voters. The server aspects of the proposed system have such distribution of authority that server does not enable to manipulate the votes. It is expected that the proposed online voting system will increase the transparency and reliability of the existing electoral system. It uses computer vision techniques for person identification. 
 
 
 ## OBJECTIVE:
